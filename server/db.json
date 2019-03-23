@@ -1,0 +1,180 @@
+{
+  "customers": [
+    {
+      "id": "1",
+      "firstName": "Lijie",
+      "lastName": "Fang",
+      "email": "lijie.fang@gmail.coms",
+      "phone": "1234567890",
+      "title": "Developer",
+      "status": 1
+    },
+    {
+      "id": "2",
+      "firstName": "Moshi",
+      "lastName": "Solomon",
+      "email": "moshi.solomon@disney.com",
+      "phone": "9372932391",
+      "title": "CEO",
+      "status": 2
+    },
+    {
+      "id": "3",
+      "firstName": "Oscar",
+      "lastName": "Lagatta",
+      "email": "hey.player@gmail.com",
+      "phone": "9876543212",
+      "title": "CEO",
+      "status": 1
+    },
+    {
+      "id": "4",
+      "firstName": "Alam",
+      "lastName": "Alam",
+      "email": "alam.alam@hotmail.com",
+      "phone": "3252352531",
+      "title": "CTO",
+      "status": 3
+    },
+    {
+      "id": "5",
+      "firstName": "Donna",
+      "lastName": "Barkley",
+      "email": "donnab@aol.com",
+      "phone": "0192837475",
+      "title": "Student",
+      "status": 4
+    },
+    {
+      "id": "6",
+      "firstName": "Larry",
+      "lastName": "Fitzgerald",
+      "email": "super.secret@gmail.com",
+      "phone": "1234432122",
+      "title": "Quarterback",
+      "status": 4
+    },
+    {
+      "id": "7",
+      "firstName": "Victor",
+      "lastName": "Wooten",
+      "email": "w00t@victor.com",
+      "phone": "1888333992",
+      "title": "Bassist",
+      "status": 1
+    },
+    {
+      "id": "8",
+      "firstName": "Chris",
+      "lastName": "Take",
+      "email": "crispy@gmail.com",
+      "phone": "9927381924",
+      "title": "Developer",
+      "status": 1
+    },
+    {
+      "id": "9",
+      "firstName": "Christian",
+      "lastName": "Peterson",
+      "email": "cp3@lol.com",
+      "phone": "0099831234",
+      "title": "Handyman",
+      "status": 3
+    },
+    {
+      "id": "10",
+      "firstName": "RIP",
+      "lastName": "Stick",
+      "email": "r.i.p@deadly.com",
+      "phone": "6123512311",
+      "title": "Grim Reaper",
+      "status": 2
+    }
+  ],
+  "projects": [
+    {
+      "id": "1",
+      "title": "Get Started with Angular",
+      "details": "Agular is basically a collection of Components brought together within modules.",
+      "percentComplete": 1,
+      "approved": false,
+      "startDate": null,
+      "targetDate": null,
+      "completionDate": null,
+      "customerId": "1"
+    },
+    {
+      "id": "2",
+      "title": "Advanced Angular Component Patterns",
+      "details": "The perfect component makes good decisions for you without making you think about it",
+      "percentComplete": 20,
+      "approved": false,
+      "startDate": null,
+      "targetDate": null,
+      "completionDate": null,
+      "customerId": "3"
+    },
+    {
+      "id": "3",
+      "title": "State Management with NGRX",
+      "details": "Reactive State Management in Angular with ngrx",
+      "percentComplete": 60,
+      "approved": false,
+      "startDate": null,
+      "targetDate": null,
+      "completionDate": null,
+      "customerId": "2"
+    },
+    {
+      "id": "5",
+      "title": "HTTP in Angular",
+      "details": "Client-server communication is at the heart of any modern web application. ",
+      "percentComplete": 1,
+      "approved": false,
+      "startDate": null,
+      "targetDate": "2018-10-26T07:00:00.000Z",
+      "completionDate": null,
+      "customerId": "1"
+    },
+    {
+      "id": "ZeVfSH1",
+      "title": "Dynamic Forms in Angular",
+      "details": "Dynamic Forms in Angular give us the ability to define the underlying object model before binding the form to the template. ",
+      "percentComplete": 0,
+      "approved": false,
+      "customerId": "2"
+    },
+    {
+      "id": "Hhgsm8I",
+      "title": "Structure Angular Apps with Angular Material Components",
+      "details": "Explore integral Angular Material components",
+      "percentComplete": 0,
+      "approved": false,
+      "customerId": null
+    },
+    {
+      "id": "RRJHUVy",
+      "title": "Angular Service Injection with the Dependency Injector ",
+      "details": "Services and registering service providers are an inherent part of an Angular application",
+      "percentComplete": 0,
+      "approved": false,
+      "customerId": null
+    },
+    {
+      "id": "uw4zpi4",
+      "title": "Create Dynamic Components in Angular",
+      "details": "Dynamic data gives us the opportunity to build dynamic components. ",
+      "percentComplete": 0,
+      "approved": false,
+      "customerId": null
+    },
+    {
+      "id": "C3Xypjs",
+      "title": "Understand How to Style Angular Components",
+      "details": "It is a fundamental part of creating nice-looking, adorable and successful user interfaces",
+      "percentComplete": 0,
+      "approved": false,
+      "customerId": null
+    }
+  ]
+}
