@@ -4,6 +4,7 @@ import { Project } from '../../projects/project.model';
 // 01 Define our possible action types
 export enum ProjectsActionTypes {
   ProjectSelected = '[Projects] Selected',
+  LoadProjects = '[Projects] Load Data',
   AddProject = '[Projects] Add Data',
   UpdateProject = '[Projects] Update Data',
   DeleteProject = '[Projects] Delete Data'
@@ -15,6 +16,10 @@ export class SelectProject implements Action {
   constructor(private payload: Project) {}
 }
 
+export class LoadProjects implements Action {
+  readonly type = ProjectsActionTypes.LoadProjects;
+  constructor(private payload: Project[]) {}
+}
 export class AddProject implements Action {
   readonly type = ProjectsActionTypes.AddProject;
   constructor(private payload: Project) {}
@@ -35,6 +40,7 @@ export class DeleteProject implements Action {
 // 03 expose projects actions as union type
 export type ProjectsActions =
   | SelectProject
+  | LoadProjects
   | AddProject
   | UpdateProject
   | DeleteProject;

@@ -1,6 +1,7 @@
 import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import {
+  selectAllProjects,
   Customer,
   Project,
   ProjectsService,
@@ -9,7 +10,9 @@ import {
   ProjectsState,
   AddProject,
   UpdateProject,
-  DeleteProject
+  DeleteProject,
+  LoadProjects,
+  initialProjects
 } from '@workshop/core-data';
 import { Store, select } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -39,10 +42,7 @@ export class ProjectsComponent implements OnInit {
     private store: Store<ProjectsState>,
     private ns: NotificationsService
   ) {
-    this.projects$ = this.store.pipe(
-      select('projects'),
-      map((projectsState: ProjectsState) => projectsState.projects)
-    );
+    this.projects$ = this.store.pipe(select(selectAllProjects));
   }
 
   ngOnInit() {
@@ -69,6 +69,8 @@ export class ProjectsComponent implements OnInit {
 
   getProjects() {
     // this.projects$ = this.projectsService.all(); // for now
+
+    this.store.dispatch(new LoadProjects(initialProjects));
   }
 
   saveProject(project) {
@@ -79,12 +81,14 @@ export class ProjectsComponent implements OnInit {
     }
   }
 
+  //  every action now is being handled by the ngrx entity in the reducer .
+
   createProject(project) {
     this.store.dispatch(new AddProject(project));
 
     // these will go away
     this.ns.emit('Project created!');
-    this.getProjects();
+    // we don't need to rehydrate again for each operation.
   }
 
   updateProject(project) {
@@ -92,15 +96,15 @@ export class ProjectsComponent implements OnInit {
 
     // these will go away
     this.ns.emit('Project saved!');
-    this.getProjects();
   }
 
   deleteProject(project) {
     // WE WANT TO MOVE AWAY FROM THESE GENERIC OBJECT LITERALS { TYPE:..., PAYLOAD:.... }
-    this.store.dispatch(new DeleteProject(project));
+
+    // because we are using the entity to delete it we need to send the id.
+    this.store.dispatch(new DeleteProject(project.id));
 
     // these will go away
     this.ns.emit('Project deleted!');
-    this.getProjects();
   }
 }

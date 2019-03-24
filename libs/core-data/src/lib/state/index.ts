@@ -17,6 +17,30 @@ export const reducers: ActionReducerMap<AppState> = {
 };
 
 // -------------------------------------------------------------------
+// PROJECTS SELECTORS
+// -------------------------------------------------------------------
+// THIS ALLOWS US TO GRAB A SLICE OF STATE FROM THE STORE.
+// AND IS SPECIFIC TO A FEATURE IN THIS CASE THE PROJECTS.
+export const selectProjectsState = createFeatureSelector<
+  fromProjects.ProjectsState
+>('projects');
+
+export const selectProjectIds = createSelector(
+  selectProjectsState,
+  fromProjects.selectProjectIds
+);
+
+export const selectProjetEntitites = createSelector(
+  selectProjectsState,
+  fromProjects.selectProjectEntities
+);
+
+export const selectAllProjects = createSelector(
+  selectProjectsState,
+  fromProjects.selectAllProjects
+);
+
+// -------------------------------------------------------------------
 // CUSTOMERS SELECTORS
 // -------------------------------------------------------------------
 export const selectCustomersState = createFeatureSelector<

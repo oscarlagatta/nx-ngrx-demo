@@ -1,6 +1,7 @@
 import { Project } from './../../projects/project.model';
 import { ProjectsActionTypes } from './projects.actions';
-const initialProjects: Project[] = [
+import { EntityState, EntityAdapter, createEntityAdapter } from '@ngrx/entity';
+export const initialProjects: Project[] = [
   {
     id: '1',
     title: 'Project One',
@@ -36,42 +37,51 @@ const deleteProject = (projects, project) =>
   projects.filter(w => project.id !== w.id);
 
 // 01 define the shape of our state
-export interface ProjectsState {
-  projects: Project[];
+// export interface ProjectsState {
+//   projects: Project[];
+//   selectedProjectId: string | null;
+// }
+
+export interface ProjectsState extends EntityState<Project> {
   selectedProjectId: string | null;
 }
 
-// 02 define our initial state
-export const initialState: ProjectsState = {
-  projects: initialProjects,
-  selectedProjectId: null
-};
+// 02 create entity adapter
+export const adapter: EntityAdapter<Project> = createEntityAdapter<Project>();
 
-// 03 Build the most simplest reducer
+// because IDS and entities are being handled under the hood
+// so we pull the initial state our from the adapter we just created.
+
+// 03 Define the initial state // we define only the additional custom properties
+//    that we want to put in our initial state.
+export const initialState: ProjectsState = adapter.getInitialState({
+  selectedProjectId: null
+});
+
+// 03 Build out the reducer
 export function projectsReducer(state = initialState, action): ProjectsState {
   switch (action.type) {
     // each operation will be immutable...
     case ProjectsActionTypes.ProjectSelected:
-      return {
-        selectedProjectId: action.payload,
-        projects: state.projects
-      };
+      return Object.assign({}, state, { selectedProjectId: action.payload });
+    case ProjectsActionTypes.LoadProjects:
+      return adapter.addMany(action.payload, state);
     case ProjectsActionTypes.AddProject:
-      return {
-        selectedProjectId: state.selectedProjectId,
-        projects: createProject(state.projects, action.payload)
-      };
+      return adapter.addOne(action.payload, state);
     case ProjectsActionTypes.UpdateProject:
-      return {
-        selectedProjectId: state.selectedProjectId,
-        projects: updateProject(state.projects, action.payload)
-      };
+      return adapter.upsertOne(action.payload, state);
     case ProjectsActionTypes.DeleteProject:
-      return {
-        selectedProjectId: state.selectedProjectId,
-        projects: deleteProject(state.projects, action.payload)
-      };
+      return adapter.removeOne(action.payload, state);
     default:
       return state;
   }
 }
+
+// because we are using ngrx entity we have some selectors that are available .
+export const getSelectedProjectId = (state: ProjectsState) =>
+  state.selectedProjectId;
+
+const { selectIds, selectEntities, selectAll } = adapter.getSelectors();
+export const selectProjectIds = selectIds;
+export const selectProjectEntities = selectEntities;
+export const selectAllProjects = selectAll;
