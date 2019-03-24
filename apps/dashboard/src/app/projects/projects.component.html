@@ -3,7 +3,8 @@
     <app-projects-list
       [projects]="projects$ | async"
       (selected)="selectProject($event)"
-      (deleted)="deleteProject($event)">
+      (deleted)="deleteProject($event)"
+    >
     </app-projects-list>
   </div>
 
@@ -12,7 +13,8 @@
       [project]="currentProject"
       [customers]="customers$ | async"
       (saved)="saveProject($event)"
-      (cancelled)="resetCurrentProject($event)">
+      (cancelled)="resetCurrentProject($event)"
+    >
     </app-project-details>
   </div>
 </div>
