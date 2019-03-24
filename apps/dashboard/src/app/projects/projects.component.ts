@@ -6,7 +6,10 @@ import {
   ProjectsService,
   NotificationsService,
   CustomersService,
-  ProjectsState
+  ProjectsState,
+  AddProject,
+  UpdateProject,
+  DeleteProject
 } from '@workshop/core-data';
 import { Store, select } from '@ngrx/store';
 import { map } from 'rxjs/operators';
@@ -77,26 +80,27 @@ export class ProjectsComponent implements OnInit {
   }
 
   createProject(project) {
-    this.projectsService.create(project).subscribe(response => {
-      this.ns.emit('Project created!');
-      this.getProjects();
-      this.resetCurrentProject();
-    });
+    this.store.dispatch(new AddProject(project));
+
+    // these will go away
+    this.ns.emit('Project created!');
+    this.getProjects();
   }
 
   updateProject(project) {
-    this.projectsService.update(project).subscribe(response => {
-      this.ns.emit('Project saved!');
-      this.getProjects();
-      this.resetCurrentProject();
-    });
+    this.store.dispatch(new UpdateProject(project)); // concrete action instance
+
+    // these will go away
+    this.ns.emit('Project saved!');
+    this.getProjects();
   }
 
   deleteProject(project) {
-    this.projectsService.delete(project).subscribe(response => {
-      this.ns.emit('Project deleted!');
-      this.getProjects();
-      this.resetCurrentProject();
-    });
+    // WE WANT TO MOVE AWAY FROM THESE GENERIC OBJECT LITERALS { TYPE:..., PAYLOAD:.... }
+    this.store.dispatch(new DeleteProject(project));
+
+    // these will go away
+    this.ns.emit('Project deleted!');
+    this.getProjects();
   }
 }
