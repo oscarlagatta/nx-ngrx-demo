@@ -93,30 +93,8 @@
   ],
   "projects": [
     {
-      "id": "1",
-      "title": "Get Started with Angular",
-      "details": "Agular is basically a collection of Components brought together within modules.",
-      "percentComplete": 1,
-      "approved": false,
-      "startDate": null,
-      "targetDate": null,
-      "completionDate": null,
-      "customerId": "1"
-    },
-    {
-      "id": "2",
-      "title": "Advanced Angular Component Patterns",
-      "details": "The perfect component makes good decisions for you without making you think about it",
-      "percentComplete": 20,
-      "approved": false,
-      "startDate": null,
-      "targetDate": null,
-      "completionDate": null,
-      "customerId": "3"
-    },
-    {
       "id": "3",
-      "title": "State Management with NGRX",
+      "title": "State Management with NGRX ROCKS!!!!!!!!",
       "details": "Reactive State Management in Angular with ngrx",
       "percentComplete": 60,
       "approved": false,
@@ -137,42 +115,26 @@
       "customerId": "1"
     },
     {
-      "id": "ZeVfSH1",
+      "id": "6",
       "title": "Dynamic Forms in Angular",
       "details": "Dynamic Forms in Angular give us the ability to define the underlying object model before binding the form to the template. ",
-      "percentComplete": 0,
+      "percentComplete": 1,
       "approved": false,
       "customerId": "2"
     },
     {
-      "id": "Hhgsm8I",
-      "title": "Structure Angular Apps with Angular Material Components",
-      "details": "Explore integral Angular Material components",
-      "percentComplete": 0,
-      "approved": false,
-      "customerId": null
-    },
-    {
-      "id": "RRJHUVy",
+      "id": "8",
       "title": "Angular Service Injection with the Dependency Injector ",
       "details": "Services and registering service providers are an inherent part of an Angular application",
-      "percentComplete": 0,
+      "percentComplete": 24,
       "approved": false,
       "customerId": null
     },
     {
-      "id": "uw4zpi4",
+      "id": "9",
       "title": "Create Dynamic Components in Angular",
       "details": "Dynamic data gives us the opportunity to build dynamic components. ",
-      "percentComplete": 0,
-      "approved": false,
-      "customerId": null
-    },
-    {
-      "id": "C3Xypjs",
-      "title": "Understand How to Style Angular Components",
-      "details": "It is a fundamental part of creating nice-looking, adorable and successful user interfaces",
-      "percentComplete": 0,
+      "percentComplete": 48,
       "approved": false,
       "customerId": null
     }

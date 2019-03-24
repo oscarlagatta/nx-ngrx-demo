@@ -64,13 +64,13 @@ export function projectsReducer(state = initialState, action): ProjectsState {
     // each operation will be immutable...
     case ProjectsActionTypes.ProjectSelected:
       return Object.assign({}, state, { selectedProjectId: action.payload });
-    case ProjectsActionTypes.LoadProjects:
+    case ProjectsActionTypes.ProjectsLoaded:
       return adapter.addMany(action.payload, state);
-    case ProjectsActionTypes.AddProject:
+    case ProjectsActionTypes.ProjectAdded:
       return adapter.addOne(action.payload, state);
-    case ProjectsActionTypes.UpdateProject:
+    case ProjectsActionTypes.ProjectUpdated:
       return adapter.upsertOne(action.payload, state);
-    case ProjectsActionTypes.DeleteProject:
+    case ProjectsActionTypes.ProjectDeleted:
       return adapter.removeOne(action.payload, state);
     default:
       return state;

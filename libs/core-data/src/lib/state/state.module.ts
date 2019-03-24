@@ -8,6 +8,7 @@ import { NxModule } from '@nrwl/nx';
 import { reducers } from '.';
 import { CustomersEffects } from './customers/customers.effects';
 import { environment } from '@env/environment.prod';
+import { ProjectsEffects } from './projects/projects.effects';
 
 @NgModule({
   imports: [
@@ -18,7 +19,7 @@ import { environment } from '@env/environment.prod';
       maxAge: 10,
       logOnly: environment.production
     }), // restrict extension to log-only mode , // retains last 10 states
-    EffectsModule.forRoot([CustomersEffects])
+    EffectsModule.forRoot([CustomersEffects, ProjectsEffects])
   ],
   declarations: []
 })

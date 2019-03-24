@@ -37,7 +37,6 @@ export class ProjectsComponent implements OnInit {
   currentProject: Project;
 
   constructor(
-    private projectsService: ProjectsService,
     private customerService: CustomersService,
     private store: Store<ProjectsState>,
     private ns: NotificationsService
@@ -70,7 +69,7 @@ export class ProjectsComponent implements OnInit {
   getProjects() {
     // this.projects$ = this.projectsService.all(); // for now
 
-    this.store.dispatch(new LoadProjects(initialProjects));
+    this.store.dispatch(new LoadProjects());
   }
 
   saveProject(project) {
@@ -102,7 +101,7 @@ export class ProjectsComponent implements OnInit {
     // WE WANT TO MOVE AWAY FROM THESE GENERIC OBJECT LITERALS { TYPE:..., PAYLOAD:.... }
 
     // because we are using the entity to delete it we need to send the id.
-    this.store.dispatch(new DeleteProject(project.id));
+    this.store.dispatch(new DeleteProject(project));
 
     // these will go away
     this.ns.emit('Project deleted!');
