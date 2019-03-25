@@ -6,6 +6,7 @@ import {
 
 import * as fromCustomers from './customers/customers.reducer';
 import * as fromProjects from './projects/projects.reducer';
+import { Project } from '@workshop/core-data';
 export interface AppState {
   customers: fromCustomers.CustomersState;
   projects: fromProjects.ProjectsState;
@@ -25,14 +26,36 @@ export const selectProjectsState = createFeatureSelector<
   fromProjects.ProjectsState
 >('projects');
 
+export const selectCurrentProjectId = createSelector(
+  selectProjectsState,
+  fromProjects.getSelectedProjectId
+);
+
+const emptyProject: Project = {
+  id: null,
+  title: '',
+  details: '',
+  percentComplete: 0,
+  approved: false,
+  customerId: null
+};
+
 export const selectProjectIds = createSelector(
   selectProjectsState,
   fromProjects.selectProjectIds
 );
 
-export const selectProjetEntitites = createSelector(
+export const selectProjectEntities = createSelector(
   selectProjectsState,
   fromProjects.selectProjectEntities
+);
+
+export const selectCurrentProject = createSelector(
+  selectProjectEntities,
+  selectCurrentProjectId,
+  (projectEntities, projectId) => {
+    return projectId ? projectEntities[projectId] : emptyProject;
+  }
 );
 
 export const selectAllProjects = createSelector(
@@ -50,4 +73,22 @@ export const selectCustomersState = createFeatureSelector<
 export const selectAllCustomers = createSelector(
   selectCustomersState,
   fromCustomers.selectAllCustomers
+);
+
+export const selectCustomersProjects = createSelector(
+  selectAllCustomers,
+  selectAllProjects,
+  (customers, projects) => {
+    return customers.map(customer => {
+      return Object.assign(
+        {},
+        {
+          ...customer,
+          projects: projects.filter(
+            project => project.customerId === customer.id
+          )
+        }
+      );
+    });
+  }
 );

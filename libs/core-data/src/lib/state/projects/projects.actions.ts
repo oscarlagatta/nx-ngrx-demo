@@ -20,6 +20,7 @@ export enum ProjectsActionTypes {
 // 02 create our actions
 export class SelectProject implements Action {
   readonly type = ProjectsActionTypes.ProjectSelected;
+  constructor(private payload: Project) {}
 }
 export class ProjectsLoaded implements Action {
   readonly type = ProjectsActionTypes.ProjectsLoaded;

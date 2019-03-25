@@ -94,7 +94,7 @@
   "projects": [
     {
       "id": "3",
-      "title": "State Management with NGRX ROCKS!!!!!!!!",
+      "title": "State Management with NGRX",
       "details": "Reactive State Management in Angular with ngrx",
       "percentComplete": 60,
       "approved": false,
@@ -126,7 +126,7 @@
       "id": "8",
       "title": "Angular Service Injection with the Dependency Injector ",
       "details": "Services and registering service providers are an inherent part of an Angular application",
-      "percentComplete": 24,
+      "percentComplete": 5,
       "approved": false,
       "customerId": null
     },
@@ -134,9 +134,9 @@
       "id": "9",
       "title": "Create Dynamic Components in Angular",
       "details": "Dynamic data gives us the opportunity to build dynamic components. ",
-      "percentComplete": 48,
+      "percentComplete": 2,
       "approved": false,
-      "customerId": null
+      "customerId": "3"
     }
   ]
 }
