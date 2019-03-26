@@ -1,23 +1,12 @@
-import { Observable } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import {
-  selectAllProjects,
   Customer,
-  Project,
-  ProjectsService,
-  NotificationsService,
   CustomersService,
-  ProjectsState,
-  AddProject,
-  UpdateProject,
-  DeleteProject,
-  LoadProjects,
-  initialProjects,
-  selectCurrentProject,
-  SelectProject
+  NotificationsService,
+  Project,
+  ProjectsFacade
 } from '@workshop/core-data';
-import { Store, select } from '@ngrx/store';
-import { map } from 'rxjs/operators';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-projects',
@@ -31,11 +20,11 @@ export class ProjectsComponent implements OnInit {
 
   constructor(
     private customerService: CustomersService,
-    private store: Store<ProjectsState>,
+    private facade: ProjectsFacade,
     private ns: NotificationsService
   ) {
-    this.projects$ = this.store.pipe(select(selectAllProjects));
-    this.currentProject$ = this.store.pipe(select(selectCurrentProject));
+    this.projects$ = this.facade.projects$;
+    this.currentProject$ = this.facade.currentProject$;
   }
 
   ngOnInit() {
@@ -46,12 +35,14 @@ export class ProjectsComponent implements OnInit {
 
   resetCurrentProject() {
     // this.currentProject = emptyProject;
-    this.store.dispatch(new SelectProject(null));
+    // this.store.dispatch(new SelectProject(null));
+    this.facade.selectProject({ id: null });
   }
 
   selectProject(project) {
     // this.currentProject = project;
-    this.store.dispatch(new SelectProject(project.id));
+    //  this.store.dispatch(new SelectProject(project.id));
+    this.facade.selectProject(project);
   }
 
   cancel(project) {
@@ -65,7 +56,8 @@ export class ProjectsComponent implements OnInit {
   getProjects() {
     // this.projects$ = this.projectsService.all(); // for now
 
-    this.store.dispatch(new LoadProjects());
+    // this.store.dispatch(new LoadProjects());
+    this.facade.getProjects();
   }
 
   saveProject(project) {
@@ -79,7 +71,8 @@ export class ProjectsComponent implements OnInit {
   //  every action now is being handled by the ngrx entity in the reducer .
 
   createProject(project) {
-    this.store.dispatch(new AddProject(project));
+    // this.store.dispatch(new AddProject(project));
+    this.facade.createProject(project);
 
     // these will go away
     this.ns.emit('Project created!');
@@ -87,7 +80,8 @@ export class ProjectsComponent implements OnInit {
   }
 
   updateProject(project) {
-    this.store.dispatch(new UpdateProject(project)); // concrete action instance
+    // this.store.dispatch(new UpdateProject(project)); // concrete action instance
+    this.facade.updateProject(project);
 
     // these will go away
     this.ns.emit('Project saved!');
@@ -97,7 +91,8 @@ export class ProjectsComponent implements OnInit {
     // WE WANT TO MOVE AWAY FROM THESE GENERIC OBJECT LITERALS { TYPE:..., PAYLOAD:.... }
 
     // because we are using the entity to delete it we need to send the id.
-    this.store.dispatch(new DeleteProject(project));
+    // this.store.dispatch(new DeleteProject(project));
+    this.facade.deleteProject(project);
 
     // these will go away
     this.ns.emit('Project deleted!');
