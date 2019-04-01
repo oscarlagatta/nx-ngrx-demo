@@ -118,7 +118,7 @@
       "id": "6",
       "title": "Dynamic Forms in Angular",
       "details": "Dynamic Forms in Angular give us the ability to define the underlying object model before binding the form to the template. ",
-      "percentComplete": 1,
+      "percentComplete": 22,
       "approved": false,
       "customerId": "2"
     },
@@ -126,9 +126,9 @@
       "id": "8",
       "title": "Angular Service Injection with the Dependency Injector ",
       "details": "Services and registering service providers are an inherent part of an Angular application",
-      "percentComplete": 5,
+      "percentComplete": 23,
       "approved": false,
-      "customerId": null
+      "customerId": "2"
     },
     {
       "id": "9",
